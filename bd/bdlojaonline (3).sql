@@ -59,7 +59,7 @@ ENGINE = InnoDB;
 -- Table `bdlojaonline`.`categoria`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `bdlojaonline`.`categoria` (
-  `idcategoria` INT NOT NULL,
+  `idcategoria` INT NOT NULL AUTO_INCREMENT,
   `descricao` VARCHAR(45) NULL,
   PRIMARY KEY (`idcategoria`))
 ENGINE = InnoDB;

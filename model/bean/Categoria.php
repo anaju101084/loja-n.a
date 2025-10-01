@@ -10,7 +10,7 @@
         }
 
         public function setIdCategoria($idcategoria) {
-            $this->idcategoria = $idcatgoria;
+            $this->idcategoria = $idcategoria;
         }
 
         public function getDescricao() {
