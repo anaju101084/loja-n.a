@@ -42,7 +42,7 @@
 
         public function find($id) {
             try {
-                $query = BD::getConexao()->prepare("SELECT * FROM categoria WHERE id_categoria = :i");
+                $query = BD::getConexao()->prepare("SELECT * FROM categoria WHERE idcategoria = :i");
                 $query->bindValue(':i',$id, PDO::PARAM_INT);
 
                 if(!$query->execute())
@@ -51,6 +51,7 @@
                 $linha = $query->fetch(PDO::FETCH_ASSOC);
                 $categoria = new Categoria();
                 $categoria->setDescricao($linha['descricao']);
+                $categoria->setIdCategoria($linha['idcategoria']);
 
 
                 return $categoria;
@@ -64,12 +65,11 @@
             try {
                 $query = BD::getConexao()->prepare(
                     "UPDATE categoria 
-                     SET categoria = :c 
-                     WHERE id_categoria = :i"
+                     SET descricao = :d 
+                     WHERE idcategoria = :i"
                 );
-                $query->bindValue(':c',$categoria->getCategoria(), PDO::PARAM_STR);
-                $query->bindValue(':d',$categoria->getdescricao(), PDO::PARAM_STR);
-                $query->bindValue(':i',$categoria->getid_categoria(), PDO::PARAM_STR);
+                $query->bindValue(':d',$categoria->getDescricao(), PDO::PARAM_STR);
+                $query->bindValue(':i',$categoria->getIdCategoria(), PDO::PARAM_INT);
 
                 if(!$query->execute())
                     print_r($query->errorInfo());
@@ -83,7 +83,7 @@
             try {
                 $query = BD::getConexao()->prepare(
                     "DELETE FROM categoria
-                     WHERE id_categoria = :i"
+                     WHERE idcategoria = :i"
                 );
                 $query->bindValue(':i',$id, PDO::PARAM_INT);
 
