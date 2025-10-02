@@ -1,9 +1,9 @@
 <?php
-    // Buscar as informações do categoria para atualizar
+    // Buscar as informações do fornecedor para atualizar
     require "../../autoload.php";
 
-    $dao = new CategoriaDAO();
-    $categoria = $dao->find($_GET['id']);
+    $dao = new DescricaoDAO();
+    $fornecedor = $dao->find($_GET['id']);
 ?>
 
 <!DOCTYPE html>
@@ -267,12 +267,7 @@
                     <form action="update.php" method="post">
                         <p class="form-group">
                             <label for="descricao">Descrição</label>
-                            <input type="text" name="descricao" class="form-control" value="<?= $categoria->getDescricao() ?>">
-                        </p>
-                        <p><input type="hidden" name="id" value="<?= $categoria->getIdCategoria() ?>"></p>
-                        <p class="form-group">
-                            <input type="reset" value="Limpar" class="btn btn-default">
-                            <input type="submit" value="Salvar" class="btn btn-primary">
+                            <input type="text" name="Descricao" class="form-control" value="<?= $descricao->getdescricao() ?>">
                         </p>
                     </form>
                 </div>
