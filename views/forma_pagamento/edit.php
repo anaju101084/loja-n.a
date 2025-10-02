@@ -2,7 +2,7 @@
     // Buscar as informações do categoria para atualizar
     require "../../autoload.php";
 
-    $dao = new CategoriaDAO();
+    $dao = new Forma_pagamentoDAO();
     $categoria = $dao->find($_GET['id']);
 ?>
 
@@ -263,13 +263,13 @@
             <?php include "../../sidebar.html" ?>
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                 <div class="my-4">
-                    <h2>Cadastrar Categoria</h2>
+                    <h2>Forma de Pagamento</h2>
                     <form action="update.php" method="post">
                         <p class="form-group">
                             <label for="descricao">Descrição</label>
-                            <input type="text" name="descricao" class="form-control" value="<?= $categoria->getDescricao() ?>">
+                            <input type="text" name="forma_pagamento" class="form-control" value="<?= $forma_pagamento->getDescricao() ?>">
                         </p>
-                        <p><input type="hidden" name="id" value="<?= $categoria->getIdCategoria() ?>"></p>
+                        <p><input type="hidden" name="id" value="<?= $forma_pagamento->getidforma_pagamento() ?>"></p>
                         <p class="form-group">
                             <input type="reset" value="Limpar" class="btn btn-default">
                             <input type="submit" value="Salvar" class="btn btn-primary">

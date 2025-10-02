@@ -51,6 +51,7 @@
                 $linha = $query->fetch(PDO::FETCH_ASSOC);
                 $categoria = new Categoria();
                 $categoria->setDescricao($linha['descricao']);
+                $categoria->setDescrcao($linha['descricao']);
 
 
                 return $categoria;
@@ -68,8 +69,7 @@
                      WHERE id_categoria = :i"
                 );
                 $query->bindValue(':c',$categoria->getCategoria(), PDO::PARAM_STR);
-                $query->bindValue(':d',$categoria->getdescricao(), PDO::PARAM_STR);
-                $query->bindValue(':i',$categoria->getid_categoria(), PDO::PARAM_STR);
+                $query->bindValue(':r',$categoria->getdescricao(), PDO::PARAM_STR);
 
                 if(!$query->execute())
                     print_r($query->errorInfo());
