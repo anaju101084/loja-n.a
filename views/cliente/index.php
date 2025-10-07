@@ -1,7 +1,7 @@
 <?php
     require "../../autoload.php";
 
-    $dao = new Forma_pagamentoDAO();
+   $dao = new ClienteDAO();
 ?>
 
 <!DOCTYPE html>
@@ -20,6 +20,8 @@
     <meta name="theme-color" content="#712cf9">
     <link href="../../css/dashboard.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+
     <style>
         .bd-placeholder-img {
             font-size: 1.125rem;
@@ -262,26 +264,28 @@
             <?php include "../../sidebar.html" ?>
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                 <div class="my-4">
-                    <h2>Forma de Pagamento</h2>
-                    <a href="create.php">Nova forma de pagamento</a>
+                    <h2>Clientes</h2>
+                    <a href="create.php">Novo cliente</a>
                     <table class="table table-hover">
                         <tr>
-                            <th>ID</th>
-                            <th>Descrição</th>
-                            <th>Ações</th>
+                            <th>IDCliente</th>
+                            <th>Nome</th>
+                            <th>E-mail</th>
+                            <th>Telefone</th>
                         </tr>
-                        <?php foreach($dao->read() as $forma_pagamento) : ?>
+                        <?php foreach($dao->read() as $cliente) :?>
                             <tr>
-                                <td><?= $forma_pagamento->getidforma_pagamento() ?></td>
-                                <td><?= $forma_pagamento->getdescricao() ?></td>
+                                <td><?= $cliente->getIdCliente() ?></td>
+                                <td><?= $cliente->getNome() ?></td>
+                                <td><?= $cliente->getEmail() ?></td>
+                                <td><?= $cliente->getTelefone() ?></td>
                                 <td>
-                                    <a href="edit.php?id=<?= $forma_pagamento->getidforma_pagamento() ?>" title="Editar">
+                                    <a href="edit.php?id=<?= $cliente->getIdCliente() ?>" title="Editar">
                                         <i class="bi bi-pencil"></i>
                                     </a>
-                                    <a class="link link-danger" href="destroy.php?id=<?= $forma_pagamento->getidforma_pagamento() ?>" title="Excluir">
+                                    <a class="link link-danger" href="destroy.php?id=<?= $cliente->getIdCliente() ?>" title="Excluir">
                                         <i class="bi bi-trash"></i>
                                     </a>
-
                                 </td>
                             </tr>
                         <?php endforeach ?>
