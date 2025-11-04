@@ -6,6 +6,7 @@
         private $data;
         private $cliente_idcliente;
         private $forma_pagamento_idforma_pagamento;
+        private $tipoProduto; // Associação com a classe TipoProduto
 
         // Métodos
         public function getIdvenda() {
@@ -46,6 +47,15 @@
 
         public function setForma_pagamento_idforma_pagamento($forma_pagamento_idforma_pagamento) {
             $this->forma_pagamento_idforma_pagamento = $forma_pagamento_idforma_pagamento;
+        }
+
+        // Get e set do atributo que faz associação (normal)
+        public function getTipoProduto() {
+            return $this->tipoProduto;
+        }
+
+        public function setTipoProduto($tipoProduto) {
+            $this->tipoProduto = $tipoProduto;
         }
 
         // Método para retornar uma string do objeto
