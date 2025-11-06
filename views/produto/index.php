@@ -267,24 +267,18 @@
                     <table class="table table-hover">
                         <tr>
                             <th>ID</th>
-                            <th>Descrição</th>
-                            <th>Valor Unitário</th>
-                            <th>Quantidade</th>
-                            <th>Tipo de Produto</th>
+                            <th>Venda</th>
                             <th>Ações</th>
                         </tr>
-                        <?php foreach($dao->read() as $produto) : ?>
+                        <?php foreach($dao->read() as $produto_idproduto) : ?>
                             <tr>
-                                <td><?= $produto->getId() ?></td>
-                                <td><?= $produto->getDescricao() ?></td>
-                                <td><?= $produto->getValorUnitario() ?></td>
-                                <td><?= $produto->getQuantidade() ?></td>
-                                <td><?= $produto->getTipoProduto() ?></td>
+                                <td><?= $produto->getproduto_idproduto() ?></td>
+                                <td><?= $produto->getvenda_idvenda() ?></td>
                                 <td>
-                                    <a href="edit.php?id=<?= $produto->getId() ?>" title="Editar">
+                                    <a href="edit.php?id=<?= $produto->getproduto_idproduto() ?>" title="Editar">
                                         <i class="bi bi-pencil"></i>
                                     </a>
-                                    <a class="link link-danger" href="destroy.php?id=<?= $produto->getId() ?>" title="Excluir">
+                                    <a class="link link-danger" href="destroy.php?id=<?= $produto->getproduto_idproduto() ?>" title="Excluir">
                                         <i class="bi bi-trash"></i>
                                     </a>
                                 </td>

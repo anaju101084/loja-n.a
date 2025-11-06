@@ -1,5 +1,5 @@
 <?php
-    $daoTipoProduto = new TipoProdutoDAO();
+    $daoProduto_Venda = new Produto_VendaDAO();
 ?>
 
 <!DOCTYPE html>
@@ -262,23 +262,15 @@
                     <h2>Cadastrar Produto</h2>
                     <form action="insert.php" method="post">
                         <p class="form-group">
-                            <label for="descricao">Descrição</label>
-                            <input type="text" name="descricao" class="form-control">
-                        </p>
-                        <p class="form-group">
-                            <label for="valor_unitario">Valor Unitário</label>
-                            <input type="text" name="valor_unitario" class="form-control">
-                        </p>
-                        <p class="form-group">
-                            <label for="quantidade">Quantidade</label>
-                            <input type="text" name="quantidade" class="form-control">
+                            <label for="venda_idvenda">Venda</label>
+                            <input type="text" name="venda_idvenda" class="form-control">
                         </p>
                         <!-- Para a chave estrangeira (associação com TipoProduto) -->
                         <p class="form-group">
                             <label for="tipo_produto">Tipo de Produto</label>
                             <select name="tipo_produto">
                                 <?php foreach($daoTipoProduto->read() as $tipoProduto) : ?>
-                                    <option value="<?= $tipoProduto->getId() ?>"><?= $tipoProduto->getDescricao() ?></option>
+                                    <option value="<?= $tipoProduto->getproduto_idproduto() ?>"><?= $Produto_Venda>getVenda() ?></option>
                                 <?php endforeach ?>
                             </select>
 
