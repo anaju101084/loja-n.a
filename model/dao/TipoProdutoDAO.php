@@ -1,5 +1,5 @@
 <?php
-    class TipoProdutoDAO {
+    class Produto_VendaDAO {
         public function create($tipoProduto) {
             try {
                 $query = BD::getConexao()->prepare(
