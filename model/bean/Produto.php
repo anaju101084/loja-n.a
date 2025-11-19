@@ -1,12 +1,13 @@
 <?php
-    class Venda {
+    class Produto {
         // Atributos
         private $idproduto;
         private $preco;
         private $descricao;
         private $tamanho;
-        private $categoria_idcategoria;
-        // Associação com a classe TipoProduto
+        // Associação com a classe categoria
+        private $categoria;
+
 
         // Métodos
         public function getIdproduto() {
@@ -29,7 +30,7 @@
             return $this->descricao;
         }
 
-        public function setDescricao($descrciao) {
+        public function setDescricao($descricao) {
             $this->descricao = $descricao;
         }
 
@@ -41,25 +42,17 @@
             $this->tamanho = $tamanho;
         }
 
-        public function getCategoria_idcategoria() {
-            return $this->categoria_idcategoria;
-        }
-
-        public function setCategoria_idcategoria($categoria_idcategoria) {
-            $this->categoria_idcategoria = $categoria_idcategoria;
-        }
-
         // Get e set do atributo que faz associação (normal)
-        public function getTipoProduto() {
-            return $this->tipoProduto;
+        public function getCategoria() {
+            return $this->categoria;
         }
 
-        public function setTipoProduto($tipoProduto) {
-            $this->tipoProduto = $tipoProduto;
+        public function setCategoria($categoria) {
+            $this->categoria = $categoria;
         }
 
         // Método para retornar uma string do objeto
         public function __toString() {
-            return $this->preco;
+            return $this->descricao;
         }
     }

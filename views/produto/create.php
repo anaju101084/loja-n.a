@@ -1,5 +1,7 @@
 <?php
-    $daoProduto_Venda = new Produto_VendaDAO();
+    require "../../autoload.php";
+
+    $daoCategoria = new CategoriaDAO();
 ?>
 
 <!DOCTYPE html>
@@ -262,21 +264,28 @@
                     <h2>Cadastrar Produto</h2>
                     <form action="insert.php" method="post">
                         <p class="form-group">
-                            <label for="venda_idvenda">Venda</label>
-                            <input type="text" name="venda_idvenda" class="form-control">
+                            <label for="descricao">Produto</label>
+                            <input type="text" name="descricao" class="form-control">
+                        </p>
+                        <p class="form-group">
+                            <label for="preco">Preço</label>
+                            <input type="text" name="preco" class="form-control">
+                        </p>
+                        <p class="form-group">
+                            <label for="tamanho">Tamanho</label>
+                            <input type="text" name="tamanho" class="form-control">
                         </p>
                         <!-- Para a chave estrangeira (associação com TipoProduto) -->
                         <p class="form-group">
-                            <label for="tipo_produto">Tipo de Produto</label>
-                            <select name="tipo_produto">
-                                <?php foreach($daoTipoProduto->read() as $tipoProduto) : ?>
-                                    <option value="<?= $tipoProduto->getproduto_idproduto() ?>"><?= $Produto_Venda>getVenda() ?></option>
+                            <label for="categoria">Categoria</label>
+                            <select name="categoria" class="form-control">
+                                <?php foreach($daoCategoria->read() as $categoria) : ?>
+                                    <option value="<?= $categoria->getIdCategoria() ?>"><?= $categoria->getDescricao() ?></option>
                                 <?php endforeach ?>
                             </select>
 
                         </p>
-                        
-                        <p class="form-group">
+                         <p class="form-group">
                             <input type="reset" value="Limpar" class="btn btn-default">
                             <input type="submit" value="Salvar" class="btn btn-primary">
                         </p>

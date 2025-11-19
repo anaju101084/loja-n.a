@@ -2,8 +2,10 @@
     // Buscar as informações do categoria para atualizar
     require "../../autoload.php";
 
-    $dao = new CategoriaDAO();
-    $categoria = $dao->find($_GET['id']);
+    $dao = new ProdutoDAO();
+    $produto = $dao->find($_GET['id']);
+
+    $daoCategoria = new CategoriaDAO();
 ?>
 
 <!DOCTYPE html>
@@ -263,12 +265,32 @@
             <?php include "../../sidebar.html" ?>
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                 <div class="my-4">
-                    <h2>Cadastrar Categoria</h2>
+                    <h2>Cadastrar Produto</h2>
                     <form action="update.php" method="post">
                         <p class="form-group">
                             <label for="descricao">Descrição</label>
-                            <input type="text" name="descricao" class="form-control" value="<?= $categoria->getDescricao() ?>">
+                            <input type="text" name="descricao" class="form-control" value="<?= $produto->getDescricao() ?>">
                         </p>
+                        <p class="form-group">
+                            <label for="descricao">Preço</label>
+                            <input type="text" name="preco" class="form-control" value="<?= $produto->getPreco() ?>">
+                        </p>
+                        <p class="form-group">
+                            <label for="tamanho">Tamanho</label>
+                            <input type="text" name="tamanho" class="form-control" value="<?= $produto->getTamanho() ?>">
+                        </p>
+                        <!-- Para a chave estrangeira (associação com Categoria) -->
+                        <p class="form-group">
+                            <label for="categoria">Categoria</label>
+                            <select name="categoria" class="form-control">
+                                <?php foreach($daoCategoria->read() as $categoria) : ?>
+                                    <?php if($categoria->getIdCategoria() == $produto->getCategoria()->getIdCategoria()) : ?>
+                                        <option selected value="<?= $categoria->getIdCategoria() ?>"><?= $categoria->getDescricao() ?></option>
+                                    <?php else : ?>
+                                        <option value="<?= $categoria->getIdCategoria() ?>"><?= $categoria->getDescricao() ?></option>
+                                    <?php endif ?>
+                                <?php endforeach ?>
+                            </select>
                         <p><input type="hidden" name="id" value="<?= $_GET['id'] ?>"></p>
                         <p class="form-group">
                             <input type="reset" value="Limpar" class="btn btn-default">
