@@ -4,9 +4,9 @@
         private $idvenda;
         private $preco;
         private $data;
-        private $cliente_idcliente;
-        private $forma_pagamento_idforma_pagamento;
-        private $tipoProduto; // Associação com a classe TipoProduto
+        private $cliente; // Associação com Cliente
+        private $formaPagamento; // Associação com FormaPagamento
+    
 
         // Métodos
         public function getIdvenda() {
@@ -33,30 +33,25 @@
             $this->data = $data;
         }
 
-        public function getCliente_idcliente() {
-            return $this->cliente_idcliente;
+
+        // Getters e setters de cliente e formaPagamento
+
+         public function getCliente() {
+            return $this->cliente;
         }
 
-        public function setCliente_idcliente($cliente_idcliente) {
-            $this->cliente_idcliente = $cliente_idcliente;
+         public function setCliente($cliente) {
+            $this->cliente = $cliente;
         }
 
-        public function getForma_pagamento_idforma_pagamento() {
-            return $this->forma_pagamento_idforma_pagamento;
+         public function getFormaPagamento() {
+            return $this->formapagamento;
         }
 
-        public function setForma_pagamento_idforma_pagamento($forma_pagamento_idforma_pagamento) {
-            $this->forma_pagamento_idforma_pagamento = $forma_pagamento_idforma_pagamento;
+         public function setFormaPagamento($formapagamento) {
+            $this->formapagamento = $formapagamento;
         }
 
-        // Get e set do atributo que faz associação (normal)
-        public function getTipoProduto() {
-            return $this->tipoProduto;
-        }
-
-        public function setTipoProduto($tipoProduto) {
-            $this->tipoProduto = $tipoProduto;
-        }
 
         // Método para retornar uma string do objeto
         public function __toString() {
