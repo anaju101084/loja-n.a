@@ -2,7 +2,7 @@
     require "../../autoload.php";
 
     $daoCliente = new ClienteDAO();
-    $daoForma_pagamento = new Forma_pagamentoDAO();
+    $daoForma_Pagamento = new Forma_pagamentoDAO();
 ?>
 
 <!DOCTYPE html>
@@ -281,17 +281,15 @@
                             <label for="cliente">Cliente</label>
                             <select name="cliente" class="form-control">
                                 <?php foreach($daoCliente->read() as $cliente) : ?>
-                                    <option value="<?= $cliente->getCliente() ?>"><?= $cliente->getNome() ?></option>
-                                    <option value="<?= $cliente->getCliente() ?>"><?= $cliente->getEmail() ?></option>
-                                    <option value="<?= $cliente->getCliente() ?>"><?= $cliente->getTelefone() ?></option>
+                                    <option value="<?= $cliente->getIdCliente() ?>"><?= $cliente->getNome() ?></option>
                                 <?php endforeach ?>
                             </select>
                         </p>
                         <p class="form-group">
                             <label for="forma_Pagamento">Forma de Pagamento</label>
                             <select name="forma_Pagamento" class="form-control">
-                                <?php foreach($daoForma_Pagamento->read() as $Forma_Pagamento) : ?>
-                                    <option value="<?= $forma_Pagamento->getForma_pagamento() ?>"><?= $Forma_pagamento->getDescricao() ?></option>
+                                <?php foreach($daoForma_Pagamento->read() as $forma_Pagamento) : ?>
+                                    <option value="<?= $forma_Pagamento->getIdforma_pagamento() ?>"><?= $forma_Pagamento->getDescricao() ?></option>
                                 <?php endforeach ?>
                             </select>
                         </p>

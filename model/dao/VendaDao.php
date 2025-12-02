@@ -31,11 +31,23 @@
 
                 $vendas = array();
                 foreach($query->fetchAll(PDO::FETCH_ASSOC) as $linha) {
+
+                    $daoVenda = new VendaDAO();
+                    $venda = $daoVenda->find($linha['cliente_idcliente']);
+
+                    
+                    $daoForma_pagamento = new Forma_pagamentoDAO();
+                    $forma_pagamento = $daoForma_pagamento->find($linha['forma_pagamento_idforma_pagamento']);
+
+
                     $venda = new venda();
                     $venda->setIdVenda($linha['idvenda']);
                     $venda->setPreco($linha['preco']);
-                    $venda->setCliente_idcliente($linha['cliente_idcliente']);
-                    $venda->setForma_pagamento_idforma_pagamento($linha['forma_pagamento_idforma_pagamento']);
+                    $venda->setIdCliente($linha['idcliente']);
+                    $venda->setIdforma_pagamento($linha['idforma_pagamento']);
+                    // Definir o atributo (objeto) TipoProduto
+                    $venda->setIdCliente($idcliente);
+                    $venda->setIdforma_pagamento($idforma_pagamento);
 
                     array_push($vendas,$venda);
                 }
@@ -60,10 +72,9 @@
                 
                 $venda = new venda();
                 $venda->setIdVenda($linha['idvenda']);
-                $venda->setDescricao($linha['descricao']);
-                $venda->setIdVenda($linha['idvenda']);
                 $venda->setPreco($linha['preco']);
-                $venda->setCliente_idcliente($linha['cliente_idcliente']);
+                $venda->setData($linha['data']);
+                $venda->setIdCliente($linha['cliente']);
                 $venda->setForma_pagamento_idforma_pagamento($linha['forma_pagamento_idforma_pagamento']);
 
 
